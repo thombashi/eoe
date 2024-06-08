@@ -15,15 +15,25 @@ import (
     "github.com/thombashi/eoe"
 )
 
+func successFunc() error {
+	return nil
+}
+
+func errrorFunc() error {
+	return errors.New("an error occurred")
+}
+
 func main() {
-    logger := slog.Default()
-    params := eoe.NewParams().WithLogger(logger)
+	var err error
+	logger := slog.Default()
+	params := eoe.NewParams().WithLogger(logger)
 
-    // exit the program with an error message with the logger when an error is not nil
-    err := someFunction()
-    eoe.ExitOnError(err, params.WithMessage("someFunction failed"))
+	// should not exit if the error is nil
+	err = successFunc()
+	eoe.ExitOnError(err, params.WithMessage("should not exit"))
 
-    err = anotherFunction()
-    eoe.ExitOnError(err, params.WithMessage("anotherFunction failed"))
+	// should exit if the error is not nil
+	err = errrorFunc()
+	eoe.ExitOnError(err, params.WithMessage("should exit with an error message"))
 }
 ```
