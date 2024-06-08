@@ -7,12 +7,24 @@ import (
 	eoe "github.com/thombashi/eoe"
 )
 
+func successFunc() error {
+	return nil
+}
+
+func errrorFunc() error {
+	return errors.New("an error occurred")
+}
+
 func ExampleExitOnError() {
+	var err error
 	logger := slog.Default()
+	params := eoe.NewParams().WithLogger(logger)
 
 	// should not exit if the error is nil
-	eoe.ExitOnError(nil, eoe.NewParams())
+	err = successFunc()
+	eoe.ExitOnError(err, params.WithMessage("should not exit"))
 
 	// should exit if the error is not nil
-	eoe.ExitOnError(errors.New("error"), eoe.NewParams().WithLogger(logger))
+	err = errrorFunc()
+	eoe.ExitOnError(err, params.WithMessage("should exit with an error message"))
 }
