@@ -2,6 +2,10 @@
 
 Provide a simple function to exit the program with an error message on errors in Go.
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/thombashi/eoe.svg)](https://pkg.go.dev/github.com/thombashi/eoe)
+[![Go Report Card](https://goreportcard.com/badge/github.com/thombashi/eoe)](https://goreportcard.com/report/github.com/thombashi/eoe)
+
+
 ## Usage
 
 ```go
