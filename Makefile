@@ -1,3 +1,5 @@
+VERSION := v0.0.2
+
 BIN_DIR := $(CURDIR)/bin
 
 STATICCHECK := $(BIN_DIR)/staticcheck
@@ -26,6 +28,14 @@ check: $(STATICCHECK) $(TESTIFYILINT)
 fmt: $(TESTIFYILINT)
 	gofmt -w -s .
 	$(TESTIFYILINT) -fix ./...
+
+.PHONEY: push-tag
+push-tag:
+	git push origin $(VERSION)
+
+.PHONY: tag
+tag:
+	git tag $(VERSION) -m "Release $(VERSION): Signed with gitsign"
 
 .PHONY: test
 test:
