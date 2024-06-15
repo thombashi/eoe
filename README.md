@@ -6,6 +6,13 @@ Provide a simple function to exit the program with an error message on errors in
 [![Go Report Card](https://goreportcard.com/badge/github.com/thombashi/eoe)](https://goreportcard.com/report/github.com/thombashi/eoe)
 
 
+## Installation
+
+```
+go get -u github.com/thombashi/eoe
+```
+
+
 ## Usage
 
 ```go
