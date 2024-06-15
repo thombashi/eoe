@@ -6,11 +6,11 @@ on:
       - main
     paths-ignore:
       - ".gitignore"
-      - "README.rst"
+      - "README.md"
   pull_request:
     paths-ignore:
       - ".gitignore"
-      - "README.rst"
+      - "README.md"
 
 env:
   go-version: "1.22"
