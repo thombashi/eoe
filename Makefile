@@ -5,13 +5,13 @@ BIN_DIR := $(CURDIR)/bin
 STATICCHECK := $(BIN_DIR)/staticcheck
 TESTIFYILINT := $(BIN_DIR)/testifylint
 
-
-$(STATICCHECK):
+$(BIN_DIR):
 	mkdir -p $(BIN_DIR)
+
+$(STATICCHECK): $(BIN_DIR)
 	GOBIN=$(BIN_DIR) go install honnef.co/go/tools/cmd/staticcheck@latest
 
-$(TESTIFYILINT):
-	mkdir -p $(BIN_DIR)
+$(TESTIFYILINT): $(BIN_DIR)
 	GOBIN=$(BIN_DIR) go install github.com/Antonboom/testifylint@latest
 
 .PHONY: clean
