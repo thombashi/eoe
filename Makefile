@@ -1,4 +1,4 @@
-VERSION := v0.0.2
+VERSION := v0.1.0
 
 BIN_DIR := $(CURDIR)/bin
 
