@@ -2,16 +2,15 @@ VERSION := v0.0.2
 
 BIN_DIR := $(CURDIR)/bin
 
+
 STATICCHECK := $(BIN_DIR)/staticcheck
-TESTIFYILINT := $(BIN_DIR)/testifylint
-
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
-
 $(STATICCHECK): $(BIN_DIR)
+	mkdir -p $(BIN_DIR)
 	GOBIN=$(BIN_DIR) go install honnef.co/go/tools/cmd/staticcheck@latest
 
+TESTIFYILINT := $(BIN_DIR)/testifylint
 $(TESTIFYILINT): $(BIN_DIR)
+	mkdir -p $(BIN_DIR)
 	GOBIN=$(BIN_DIR) go install github.com/Antonboom/testifylint@latest
 
 .PHONY: clean
